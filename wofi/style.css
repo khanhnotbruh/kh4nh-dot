@@ -1,0 +1,52 @@
+@define-color color0 rgba(5,5,18,0.5);
+@define-color color3 rgba(58,107,206,0.5);
+@define-color foreground rgba(172,230,243,1);
+
+*{
+    font-family: monospace;
+}
+
+window {
+    background-color: @color3;
+    border-radius:20px;
+}
+
+#input {
+    margin: 5px;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 3px solid @foreground;
+    background-color: @color0;
+    color: @foreground;
+}
+
+#inner-box {
+    background-color: @color0;
+
+}
+
+#outer-box {
+    margin: 5px;
+    padding:20px;
+    background-color: @color0;
+    border-radius:20px;
+}
+
+#scroll {
+}
+
+#text {
+padding: 5px;
+color: white;
+}
+
+#entry:nth-child(even){
+    background-color: @color3;
+}
+
+#entry:selected {
+    background-color: rgba(172,230,243,0.5);
+}
+
+#text:selected {
+} 

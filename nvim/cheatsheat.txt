@@ -1,0 +1,64 @@
+=========================================
+      KHANH'S NEOVIM KEYMAP CHEAT SHEET
+=========================================
+
+LEADERS:
+  <Space>    -> leader key
+
+=========================================
+VISUAL MODE (v / x)
+-----------------------------------------
+  <Tab>      -> Indent selection right and stay in visual
+  <S-Tab>    -> Indent selection left and stay in visual
+  J          -> Move selection down one line
+  K          -> Move selection up one line
+  <C-c>      -> Copy entire buffer to system clipboard
+  <leader>p  -> Paste without overwriting default register
+
+=========================================
+NORMAL MODE (n)
+-----------------------------------------
+BUFFER NAVIGATION:
+  zh         -> Previous buffer
+  zl         -> Next buffer
+  <leader>zd -> Delete current buffer
+  <leader>zp -> Focus back to last buffer / main window
+
+NEO-TREE:
+  <leader>te -> Toggle Neo-tree sidebar
+
+ERROR LOG / DIAGNOSTICS:
+  <leader>ol -> Open location list (all errors/warnings)
+  <leader>cl -> Close location list
+
+TERMINAL:
+  <leader>oht -> Open horizontal split terminal
+  <leader>ovt -> Open vertical split terminal
+  <leader>oft -> Toggle floating terminal (requires 'myfloatterm')
+
+REPLACE FUNCTION:
+  <leader>rw -> Replace word in buffer
+                - Escapes special characters (!#$%^&* etc.)
+                - Case-insensitive
+                - Confirm each replacement
+
+=========================================
+VISUAL / BLOCK MODE SPECIALS:
+  <leader>p  -> Paste without overwriting default register
+
+=========================================
+HOW TO USE REPLACE:
+  Press <leader>rw
+  Enter word to replace: <from>
+  Enter replacement: <to>
+  Confirm each replacement with y / n / a / q
+
+=========================================
+Notes:
+- <leader> is Space
+- Terminal keymaps only work in normal mode
+- Neo-tree and buffer commands are normal mode
+- Diagnostics keymaps require LSP running (Pyright, etc.)
+
+=========================================
+

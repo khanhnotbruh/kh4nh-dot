@@ -2,15 +2,12 @@ import Quickshell
 import Quickshell.Wayland
 import QtQuick
 import QtQuick.Effects
+import "../"
 
 PanelWindow {
     id: root
-
-    // Window Configuration
     color: "transparent"
     visible: true
-
-    // Quickshell/Wayland Settings:
     WlrLayershell.layer: WlrLayer.Top 
     WlrLayershell.keyboardFocus:WlrLayershell.none
     WlrLayershell.exclusiveZone: -1 
@@ -21,7 +18,6 @@ PanelWindow {
         right: true
         bottom:true
     }
-
     mask: Region {
         item: container; 
         intersection: Intersection.Xor 
@@ -33,11 +29,9 @@ PanelWindow {
         Canvas {
             id: frameCanvas
             anchors.fill: parent
-
-            property color frameColor: "#ff050512"//"#ffffff" 
-            property real thickness: 10          
-            property real roundness: 30         
-
+            property color frameColor:Config.frameColor 
+            property real thickness: Config.frameThick
+            property real roundness: Config.frameRadius        
             onPaint: {
                 var ctx = getContext("2d");
                 ctx.reset();

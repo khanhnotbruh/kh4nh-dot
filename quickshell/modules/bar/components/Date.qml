@@ -1,25 +1,25 @@
 import QtQuick
 import "../../../"
 Rectangle {
-    id:clock
-    width: Config.clockWidth 
-    height:Config.clockHeight
+    id:date
+    width: Config.dateWidth 
+    height:Config.dateHeight
     radius:Config.radiusAll
     color: Config.background2Color
     z:10
     anchors{
         top:parent.top
         bottom:parent.bottom
-        margins:(parent.height-Config.clockHeight)/2
+        margins:(parent.height-Config.dateHeight)/2
     }
     property var time: new Date()
 
     Text {
-        id:clockText
+        id:dateText
         anchors.centerIn: parent
-        text: parent.time.toLocaleTimeString(Qt.locale(), "hh:mm")
+        text: parent.time.toLocaleTimeString(Qt.locale(), "dddd MMM d")
         color:Config.textColor 
-        font.pixelSize: Config.clockTextSize
+        font.pixelSize: Config.dateTextSize
         font.bold: true
     }
 

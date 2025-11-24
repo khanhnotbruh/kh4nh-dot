@@ -64,7 +64,16 @@ map("n", "<leader>`oh", ":split | terminal<CR>", { noremap = true, silent = true
 -- Open terminal in vertical split
 map("n", "<leader>`ov", ":vsplit | terminal<CR>", { noremap = true, silent = true })
 
-
+map("n","<leader>`c",function ()
+    local bufs = vim.api.nvim_list_bufs()
+    for _, bufnr in ipairs(bufs) do
+        if vim.api.nvim_buf_is_loaded(bufnr) then
+            if vim.bo[bufnr].buftype == 'terminal' then
+                pcall(vim.cmd, 'bd!' .. bufnr)
+            end
+        end
+    end
+end, { noremap = true, silent = true })
 
 -----------------------------------------------------
 -- Neo-tree key:e
@@ -153,35 +162,67 @@ map("n", "<leader>u", vim.cmd.UndotreeToggle)
 ------------------------------------------------------
 -- comment && replace
 ------------------------------------------------------
-local function comment_with_prompt()
-    local sign = vim.fn.input("Comment sign: ")
-    if sign == "" then return end
-    sign = sign .. " "
-
+-- Function to handle both commenting (with prompt) and uncommenting (on empty prompt)
+local function toggle_comment_with_prompt()
+    local range = "."
     local mode = vim.fn.mode()
-    if mode:match("[vV\22]") then 
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), 'x', false)
-        vim.schedule(function()
-            local b_start = vim.api.nvim_buf_get_mark(0, "<")
-            local b_end = vim.api.nvim_buf_get_mark(0, ">")
-            local start_line = b_start[1] - 1
-            local end_line = b_end[1] -- exclusive end for get_lines? No, end is count. 
-            local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
-            for i, line in ipairs(lines) do
-                lines[i] = sign .. line
+    if mode:find("^[vV\22]") then
+        vim.cmd("normal! \27") -- Send ESC to exit visual mode
+        range = "'<,'>"
+    end
+    local comment_prefix = vim.fn.input("Comment Prefix (Leave empty to UNCOMMENT): ")
+    local escaped_prefix = vim.fn.escape(comment_prefix, "/\\")
+
+    if comment_prefix == "" then
+        -- --- UNCOMMENT LOGIC ---
+        local comment_string = vim.opt_local.commentstring:get()
+        if not comment_string or comment_string == "" then
+             print("Warning: No commentstring defined for this filetype.")
+             return
+        end
+        local leader = comment_string:match("^([^%%]*)%%s")
+        if leader then
+            local core_marker = leader:match("^(.-)%s*$")
+            local escaped_marker = vim.fn.escape(core_marker, "/\\")
+            -- \v : very magic
+            -- ^\s* : match start of line and indentation...
+            -- \zs : ...BUT start the "match to be deleted" HERE (preserves existing indentation)
+            -- %s : the comment symbol
+            -- \s* : optional space after the symbol
+            local cmd = string.format("%s s/\\v^\\s*\\zs%s\\s*//", range, escaped_marker)
+            local success, err = pcall(vim.cmd, cmd)
+            if success then
+                -- --- INDENTATION LOGIC ---
+                if range == "'<,'>" then
+                    vim.cmd("normal! gv=")
+                else
+                    vim.cmd("normal! ==")
+                end
+                print("Uncommented and re-indented.")
+            elseif err and not string.match(err, "Pattern not found") then
+                print("Error: " .. err)
             end
-            vim.api.nvim_buf_set_lines(0, start_line, end_line, false, lines)
-        end)
+        else
+            print("Warning: Could not parse comment leader.")
+        end
+
     else
-        -- NORMAL MODE LOGIC
-        local row = vim.api.nvim_win_get_cursor(0)[1] - 1
-        local line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
-        vim.api.nvim_buf_set_lines(0, row, row + 1, false, {sign .. line})
+        -- --- COMMENT LOGIC ---
+        local cmd = string.format("%s s/^/%s/", range, escaped_prefix)
+        local success, err = pcall(vim.cmd, cmd)
+        if success then
+            print("Commented with: '" .. comment_prefix .. "'")
+        elseif err and not string.match(err, "Interrupted") then
+            print("Error: " .. err)
+        end
     end
 end
 
-map({"n", "v"}, "<leader>ra", comment_with_prompt, { desc = "Comment with custom prompt" })
+-- Set the keymap
+vim.keymap.set({"n", "v"}, "<leader>ra", toggle_comment_with_prompt, { desc = "Toggle Comment/Uncomment with Prompt" })
 
+
+-- Retaining your replace_word function
 local function replace_word()
     local from = vim.fn.input("Replace: ")
     if from == "" then return end

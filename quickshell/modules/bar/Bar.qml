@@ -1,59 +1,72 @@
 import QtQuick
 import Quickshell
-import QtQuick.Layouts
 import QtQuick.Controls
 import "components"
+import "../../"
 import "."
+ 
+//color0: #80050512
+//color3: #313244
+//foreground: #fface6f3
 
 PanelWindow {
     id: topPanel
     anchors { top: true; left: true; right: true }
-    implicitHeight: topPanel.hovered  ? 55 : 2          
+    property bool hovered: barMouse.containsMouse || clockDrawer.hovered
+
+    implicitHeight: topPanel.hovered ? Config.barY+Config.barHeight : 2           
     exclusiveZone: 0
+    
     Behavior on height {
         NumberAnimation {
-            duration:30
+            duration:Config.barAnimation 
             easing.type: Easing.OutCubic
         }
     }
-    property bool hovered: false
 
     color: "transparent"  
+
     MouseArea {
+        id: barMouse 
         anchors {
             left: parent.left
             right: parent.right
-            margins: 50
+            margins: (Screen.desktopAvailableWidth-Config.barWidth)/2 
         }
-        height:55
+        height: Config.barY+Config.barHeight
         hoverEnabled: true
-        onEntered: topPanel.hovered=true
-        onExited: topPanel.hovered=false
     }
     Rectangle {
         id: topBar
+        width:Config.barWidth
         anchors {
-            left: parent.left
-            right: parent.right
-            margins: 100   
+            left:parent.left
+            right:parent.right
+            margins:(Screen.desktopAvailableWidth-Config.barWidth)/2
         }
-
-        y: topPanel.hovered ? 20 : -40
-        z:1
+        y: topPanel.hovered ? Config.barY : -Config.barheight
+        z: 1
+        
         Behavior on y {
             NumberAnimation {
-                duration: 400
-                easing.type: Easing.OutCubic
+                duration: Config.barAnimation*2
+                easing.type: Easing.InOutQuad
             }
         }
         height: 35
-        radius: 20
-        color:"#ff050512"
-        Drawer{
-            drawerWidth:200
-            Clock{
-                anchors.centerIn: parent
-            }
+        radius: Config.radiusAll 
+        color:  Config.backgroundColor 
+        clip: true
+
+        Drawer {
+            id: clockDrawer             
+            drawerWidth:Config.clockDrawerWidth
+            drawerLeft:Config.clockDrawerLeft
+            buttonWidth:Config.clockWidth
+            contentWidth:Config.clockWidth
+
+            drawerButton:Clock{}
+            drawerContent:Clock{}
         }
     }
 }

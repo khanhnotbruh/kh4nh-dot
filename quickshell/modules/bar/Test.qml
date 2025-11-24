@@ -1,3 +1,7 @@
+//color0: #80050512
+//color3: #803a6bce
+//foreground: #fface6f3
+
 import QtQuick
 import Quickshell
 import Quickshell.Io

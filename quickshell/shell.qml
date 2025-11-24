@@ -9,7 +9,7 @@ ShellRoot {
 
     Loader {
         active: true
-        sourceComponent: Edge {}
+        sourceComponent: Frame {}
     }
     Loader {
         active:true

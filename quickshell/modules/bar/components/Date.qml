@@ -1,11 +1,23 @@
 import QtQuick
-import "."
-Text {
-    text: {
-        const parts = Time.formatted.split(" ");
-        // Format: Day + Month + Date (you can reorder if you like)
-        return `${parts[0]} ${parts[1]} ${parts[2]}`  
+import "../../../"
+Rectangle {
+    width: Config.dateWidth 
+    height:Config.dateHeight
+    radius:Config.radiusAll
+    color: Config.background2Color
+    z:9
+    anchors{
+        top:parent.top
+        bottom:parent.bottom
+        margins:(parent.height-Config.dateHeight)/2
     }
-    font.pixelSize: 14
-}
 
+    Text {
+        id:dateText
+        anchors.centerIn: parent
+        text: Time.dateString
+        color:Config.textColor 
+        font.pixelSize: Config.dateTextSize
+        font.bold: true
+    }
+}

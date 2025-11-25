@@ -55,7 +55,6 @@ Rectangle {
 
         Item {
             anchors.fill: parent
-
             Loader {
                 anchors {
                 top: parent.top

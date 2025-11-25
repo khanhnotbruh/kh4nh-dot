@@ -12,14 +12,14 @@ QtObject {
     /*-------------------------------------------------------*/
     /*                     CLOCK DRAWER                      */
     /*-------------------------------------------------------*/
-    property int clockDrawerWidth: 100
+    property int clockDrawerWidth: 200
     property bool clockDrawerLeft:false
 
-    property int clockWidth:   40
+    property int clockWidth:   60
     property int clockHeight:  21
     property int clockTextSize:10
 
-    property int dateWidth:   40
+    property int dateWidth:   130
     property int dateHeight:  21 
     property int dateTextSize:10 
     /*-------------------------------------------------------*/

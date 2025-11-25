@@ -4,11 +4,6 @@ import QtQuick.Controls
 import "components"
 import "../../"
 import "."
- 
-//color0: #80050512
-//color3: #313244
-//foreground: #fface6f3
-
 PanelWindow {
     id: topPanel
     anchors { top: true; left: true; right: true }
@@ -16,7 +11,7 @@ PanelWindow {
 
     implicitHeight: topPanel.hovered ? Config.barY+Config.barHeight : 2           
     exclusiveZone: 0
-    
+
     Behavior on height {
         NumberAnimation {
             duration:Config.barAnimation 
@@ -46,7 +41,7 @@ PanelWindow {
         }
         y: topPanel.hovered ? Config.barY : -Config.barheight
         z: 1
-        
+
         Behavior on y {
             NumberAnimation {
                 duration: Config.barAnimation*2
@@ -60,13 +55,25 @@ PanelWindow {
 
         Drawer {
             id: clockDrawer             
+            z:8
             drawerWidth:Config.clockDrawerWidth
+            drawerHeight:Config.clockDrawerHeight
+            drawerMargins:Config.clockDrawerMargins
             drawerLeft:Config.clockDrawerLeft
+            drawerAnimation:Config.clockDrawerAnimation
             buttonWidth:Config.clockWidth
             contentWidth:Config.clockWidth
 
-            drawerButton:Clock{}
-            drawerContent:Date{}
+            drawerButton:Clock{
+            anchors.centerIn: parent}
+            drawerContent:Date{
+                anchors{
+                    left :Config.clockDrawerLeft?parent.left:undefined
+                    right:Config.clockDrawerLeft?undefined:parent.right
+                    leftMargin:Config.clockDrawerLeft? 0:Config.clockDrawerMargins
+                    rightMargin:Config.clockDrawerLeft? Config.clockDrawerMargins:0
+                }
+            }
         }
     }
 }

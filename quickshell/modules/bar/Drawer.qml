@@ -9,7 +9,10 @@ Rectangle {
     id: drawer
     property Component drawerButton
     property Component drawerContent
+    property int drawerAnimation: 150
     property int drawerWidth: 100
+    property int drawerHeight
+    property int drawerMargins
     property int buttonWidth: 40
     property int contentWidth: 40
     property bool hovered: drawerMouse.containsMouse
@@ -20,13 +23,13 @@ Rectangle {
         bottom: parent.bottom
         left: drawer.drawerLeft ? parent.left : undefined
         right: drawer.drawerLeft ? undefined : parent.right
-        margins:5 
+        margins:(parent.height-drawer.drawerHeight)/2  
     }
 
-    Behavior on width { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
+    Behavior on width { NumberAnimation { duration: drawer.drawerAnimation; easing.type: Easing.OutQuad } }
 
-    width: drawer.hovered ? drawer.drawerWidth : drawer.buttonWidth
-    color: "#80050512"
+    width: drawer.hovered ? drawer.drawerWidth+3*drawer.drawerMargins : drawer.buttonWidth+2*drawer.drawerMargins
+    color:Config.backgroundColor 
     radius:Config.radiusAll
     z: 2 
 
@@ -39,6 +42,7 @@ Rectangle {
     //--------- content ------------
     Rectangle {
         id:contentContainer
+        z:9
         anchors {
             top: parent.top
             bottom: parent.bottom
@@ -57,11 +61,13 @@ Rectangle {
             anchors.fill: parent
             Loader {
                 anchors {
-                top: parent.top
-                bottom: parent.bottom
-                left: drawer.drawerLeft ? undefined : parent.left
-                right: drawer.drawerLeft ? parent.right : undefined
+                    top: parent.top
+                    bottom: parent.bottom
+                    left: drawer.drawerLeft ? undefined : parent.left
+                    right: drawer.drawerLeft ? parent.right : undefined
                 }
+                visible:drawer.width>(drawer.contentWidth+drawer.buttonWidth)/3*2?1:0
+                Behavior on visible { NumberAnimation { duration: drawer.drawerAnimation; easing.type: Easing.OutQuad } }
                 sourceComponent: drawer.drawerContent
             }
         }
@@ -70,6 +76,7 @@ Rectangle {
     //--------- button ------------
     Rectangle {
         id: buttonContainer
+        z:10
         anchors {
             top: parent.top
             bottom: parent.bottom

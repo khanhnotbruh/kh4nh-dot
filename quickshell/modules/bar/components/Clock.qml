@@ -4,12 +4,12 @@ Rectangle {
     width: Config.clockWidth 
     height:Config.clockHeight
     radius:Config.radiusAll
-    color: Config.background2Color
-    z:10
+    color: Config.background2ColorDim
     anchors{
         top:parent.top
         bottom:parent.bottom
-        margins:(parent.height-Config.clockHeight)/2
+        topMargin:(parent.height-Config.clockHeight)/2
+        bottomMargin:(parent.height-Config.clockHeight)/2
     }
 
     Text {

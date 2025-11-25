@@ -2,17 +2,21 @@ pragma Singleton
 import QtQuick
 
 QtObject {
+    id:rootConfig
     /*-------------------------------------------------------*/
     /*                         BAR                           */
     /*-------------------------------------------------------*/
     property int barHeight: 35
     property int barWidth:1000 
     property int barY:30
-    property int barAnimation:150
+    property int barAnimation:300
     /*-------------------------------------------------------*/
     /*                     CLOCK DRAWER                      */
     /*-------------------------------------------------------*/
-    property int clockDrawerWidth: 200
+    property int clockDrawerWidth:rootConfig.clockWidth+rootConfig.dateWidth+3 * rootConfig.clockDrawerMargins 
+    property int clockDrawerHeight: 30
+    property int clockDrawerMargins: 3
+    property int clockDrawerAnimation:300
     property bool clockDrawerLeft:false
 
     property int clockWidth:   60
@@ -31,6 +35,10 @@ QtObject {
     property color backgroundColor: "#80050512" 
     property color background2Color:"#803a6bce"
     property color background3Color:"#313244"
+
+    property color backgroundColorDim: "#050512" //which has alpha ;-;
+    property color background2ColorDim:"#803a6bce"
+    property color background3ColorDim:"#3a6bce"
 
     property color textColor:       "#fface6f3"
     property color textColorDim:    "#aaace6f3" 

@@ -15,9 +15,9 @@ ShellRoot {
         active:true
         sourceComponent: Bar{}
     }
-//     Loader {
-//         active:true
-//         sourceComponent: Test{}
-//     } 
+//    Loader {
+//        active:true
+//        sourceComponent: Test{}
+//    } 
 }
 

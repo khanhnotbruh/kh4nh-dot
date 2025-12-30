@@ -48,7 +48,7 @@ init.lua              # Entry point: loads configs and creates popup
 
 ### BUFFER NAVIGATION
 - for more at `:help wincmd`  
-+ <C-w> with hjkl: move between buffer
++ <C-w> with hjkl or arrow keys: move between buffer
 + <C-W>T: create new tab for buffer
 
 ### NORMAL MODE LINE MOTION:
@@ -71,12 +71,21 @@ init.lua              # Entry point: loads configs and creates popup
 + "s" open in horzontal [s]plit
 
 ### TEXTOBJECTS
-- ci"    [c]hange [i]nside quotes
-- di(    [d]elete [i]nside ()
-- va{    select [a]round {}
-- yip    [y]ank [p]aragraph
-- daf    delete a function   (treesitter)
-- vif    select function body
+- this is just extended vim motion
+- usage: verb + adj + noun (must be in order)
+- VERB:
++ "c" [c]hange (delete and insert)
++ "v" select or [v]isual mode
++ "d" [d]elete
+
+- ADJ:
++ "i" [i]nside 
++ "a" [a]round
+
+- NOUN:
++ "f" [f]unction
++ "b" [b]lock (while,for loops or if)
++ "p" [p]aragraph (the continuous graph)
 
 ### LSP
 - navigation 

@@ -19,6 +19,7 @@ require("lazy").setup({
 })
 require("keymap")
 require("custom.theme").apply_last_theme()
+require("custom.auto_cmd")
 
 local lines = {
     " ███╗   ██╗███████╗██╗   ██╗██╗███╗   ███╗",

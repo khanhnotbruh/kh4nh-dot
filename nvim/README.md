@@ -20,6 +20,7 @@ lua/
 │   └── ...           # Individual plugin configs
 ├── custom/           # Custom function 
 │   ├── utils.lua     # Contain utilities for custom function
+│   ├── auto_cmd.lua  # Run this every time a event happen 
 │   └── ...           # Custom function 
 ├── keymap.lua        # All keymaps (including plugin keymaps)
 ├── option.lua        # Basic Vim options
@@ -86,6 +87,10 @@ init.lua              # Entry point: loads configs and creates popup
 + "f" [f]unction
 + "b" [b]lock (while,for loops or if)
 + "p" [p]aragraph (the continuous graph)
++ "w" [w]ord
++ "[","{","(" idk what to say here
+
+*example: ci[ : delete and insert in the [] in front of u 
 
 ### LSP
 - navigation 
@@ -99,6 +104,15 @@ init.lua              # Entry point: loads configs and creates popup
 - action
 + "rn" [r]e[n]ame current selecting word safety
 + "ca" [c]ode [a]tion : do things.... (if error log said fix available press this!)
+
+### SPELL (vim cmp for word)
+- motion:
++ "[s" go to previous miss [s]pell word
++ "]s" go to next miss [s]pell word
+- action:
++ "<leader>cl" [c]hange [l]anguage
++ "<leader>wa" [a]dd [w]ord
++ "<leader>wua"[u]ndo [a]dd [w]ord
 
 ### VIM SURROUND
 

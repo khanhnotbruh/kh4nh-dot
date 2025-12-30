@@ -45,12 +45,35 @@ init.lua              # Entry point: loads configs and creates popup
 # ⌨ Keybindings
 - **<leader>** is **space**
 
-## MUST KNOW KEYBIND:
+## MUST KNOW TIPS:
+
+## COMMAND ;-;
+- ":" to enter command mode
+- "w" for [s]ave
+- "q" for [q]uit
+- "a" for [a]ll
+- "!" for force
+- you can do ":wqa"(save quit all)
+             ":wa" (save all)
+             ":qa" (quit all) 
+             "q!"  (force quit)
+- "Lazy sync" for update plugins (is not recommended)
 
 ### BUFFER NAVIGATION
 - for more at `:help wincmd`  
 + <C-w> with hjkl or arrow keys: move between buffer
 + <C-W>T: create new tab for buffer
+
+### ACTION IN VIM
++ "i" [i]nsert mode
++ "v" [v]isual mode (the select mode)
+
++ "d" [d]elete
++ "s" cut and insert
++ "c" [c]hange (no copy)
++ "y" [y]ank (copy)
++ "p" [p]ut  (paste and cut)
++ "<leader>p"[p]aste (no cut)
 
 ### NORMAL MODE LINE MOTION:
 + '0'    go for fist place in a line 
@@ -71,7 +94,13 @@ init.lua              # Entry point: loads configs and creates popup
 + "v" open in [v]ertical split
 + "s" open in horzontal [s]plit
 
-### TEXTOBJECTS
+### CMP
+- this is the auto-completion things!
++ "<tab>"   next select
++ "<S-tab>" previous select
++ "Enter" or "<CR>" accept select (they are the same)
+
+### TEXT OBJECTS
 - this is just extended vim motion
 - usage: verb + adj + noun (must be in order)
 - VERB:
@@ -111,9 +140,24 @@ init.lua              # Entry point: loads configs and creates popup
 + "]s" go to next miss [s]pell word
 - action:
 + "<leader>cl" [c]hange [l]anguage
-+ "<leader>wa" [a]dd [w]ord
-+ "<leader>wua"[u]ndo [a]dd [w]ord
++ "<leader>wa" [w]ord [a]dd
++ "<leader>wua"[w]ord [a]dd [u]ndo 
+### DIAGNOSE AND LOG
+- terminal:
++ "<leader>lo" [l]og [o]pen
++ "<leader>lc" [l]og [c]lose
 
+- diagnose (only enable when lsp return err)
++ "<leader>df" [d]iagnose [f]loat open
++ "[d"         [d]iagnose previous
++ "]d"         [d]iagnose next
+
+-terminal
++ "<leader>th" [t]erminal open [h]orzontal
++ "<leader>tv" [t]erminal open [v]ertical
++ note: im too lazy to make a script for closing terminal
+
+ 
 ### VIM SURROUND
 
 - See `lua/keymap/surround.lua`  

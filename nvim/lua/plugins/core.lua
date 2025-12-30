@@ -63,8 +63,8 @@ return{
         event = "InsertEnter",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-path",      
-            "hrsh7th/cmp-buffer",   
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-buffer",
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
         },
@@ -72,6 +72,12 @@ return{
             require("config.cmp")
         end,
     },
+    {
+        "f3fora/cmp-spell",
+        dependencies = { "hrsh7th/nvim-cmp" },
+        event = "InsertEnter",
+    },
+
 
     ---------------------------------------------------------------------------
     -- UI + ANIMATION

@@ -15,14 +15,22 @@ cmp.setup({
         keymap.cmp(cmp, luasnip)
     ),
     sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "path" },
-        { name = "buffer" },
+        { name = "nvim_lsp" }, -- LSP completions
+        { name = "luasnip" },  -- snippets
+        { name = "buffer" },   -- words in buffer
+        { name = "path" },     -- filesystem paths
+        { name = "spell" },    -- spelling suggestions
     }),
 
     completion = {
         completeopt = "menu,menuone,noselect",
         autocomplete = { cmp.TriggerEvent.TextChanged },
     },
+})
+cmp.setup.filetype({ "markdown", "text" }, {
+    sources = cmp.config.sources({
+        { name = "spell"},
+        { name = "buffer"},
+        { name = "path" },
+    }),
 })

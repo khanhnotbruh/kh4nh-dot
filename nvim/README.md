@@ -1,6 +1,5 @@
----
-
 # My Neovim Configuration
+
 **made by khanhnotbruh or kh4nhdev**
 
 This is my personal Neovim setup — organized, fast, and designed for coding productivity.  
@@ -119,7 +118,7 @@ init.lua              # Entry point: loads configs and creates popup
 + "w" [w]ord
 + "[","{","(" idk what to say here
 
-*example: ci[ : delete and insert in the [] in front of u 
++ example: ci[ : delete and insert in the [] in front of u 
 
 ### LSP
 - navigation 
@@ -143,7 +142,7 @@ init.lua              # Entry point: loads configs and creates popup
 + "<leader>wa" [w]ord [a]dd
 + "<leader>wua"[w]ord [a]dd [u]ndo 
 ### DIAGNOSE AND LOG
-- terminal:
+- log:
 + "<leader>lo" [l]og [o]pen
 + "<leader>lc" [l]og [c]lose
 
@@ -152,7 +151,7 @@ init.lua              # Entry point: loads configs and creates popup
 + "[d"         [d]iagnose previous
 + "]d"         [d]iagnose next
 
--terminal
+- terminal
 + "<leader>th" [t]erminal open [h]orzontal
 + "<leader>tv" [t]erminal open [v]ertical
 + note: im too lazy to make a script for closing terminal

@@ -16,4 +16,14 @@ return{
         "mg979/vim-visual-multi",
         branch="master",
     },
+    {
+        "NeogitOrg/neogit",
+        lazy = true,
+        dependencies = {
+            "nvim-lua/plenary.nvim",         -- required
+            "sindrets/diffview.nvim",        -- optional - Diff integration
+            "folke/snacks.nvim",             -- optional
+        },
+        cmd = "Neogit",
+    },
 }

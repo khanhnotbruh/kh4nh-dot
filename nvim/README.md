@@ -45,124 +45,165 @@ init.lua              # Entry point: loads configs and creates popup
 - *<leader>* is **space**
 
 ## MUST KNOW TIPS:
-
+---
 ### COMMAND ;-;
 |key|usage|
 |---|-----|
-|":"|to enter command mod|
-|"w"|for save|
-|"q"|for [q]uit|
-|"a"|for [a]ll|
-|"!"|for force|
-- you can do ":wqa"(save quit all)
-             ":wa" (save all)
-             ":qa" (quit all) 
-             "q!"  (force quit)
-- "Lazy sync" for update plugins (is not recommended)
+|**:**|to enter command mod|
+|**w**|for save|
+|**q**|for [q]uit|
+|**a**|for [a]ll|
+|**!**|for force|
 
+- you can do **:wqa**(save quit all)
+             **:wa** (save all)
+             **:qa** (quit all) 
+             **q!**  (force quit)
+- **Lazy sync** for update plugins (is not recommended)
+---
 ### BUFFER NAVIGATION
+|key|usage|
+|---|-----|
+| **<C-w>** with **h** **j** **k** **l** or arrow keys| move between buffer
+| **C-W>T**: create new tab for buffer
+
 - for more at `:help wincmd`  
-+ <C-w> with hjkl or arrow keys: move between buffer
-+ <C-W>T: create new tab for buffer
 
+---
 ### ACTION IN VIM
-+ "i" [i]nsert mode
-+ "v" [v]isual mode (the select mode)
+|key|usage|
+|---|-----|
+| **i** [i]nsert mode
+| **v** [v]isual mode (the select mode)
+| **d** [d]elete
+| **s** cut and insert
+| **c** [c]hange (no copy)
+| **y** [y]ank (copy)
+| **p** [p]ut  (paste and cut)
+| **<leader>p**[p]aste (no cut)
 
-+ "d" [d]elete
-+ "s" cut and insert
-+ "c" [c]hange (no copy)
-+ "y" [y]ank (copy)
-+ "p" [p]ut  (paste and cut)
-+ "<leader>p"[p]aste (no cut)
-
+---
 ### NORMAL MODE LINE MOTION:
-+ '0'    go for fist place in a line 
-+ '^'    go for fist word
-+ '$'    go to end of line
-+ 'g_'   go for last word
+|key|usage|
+|---|-----|
+| **0** |  go for fist place in a line|
+| **^** |  go for fist word|
+| **$** |  go to end of line|
+| **g_**|  go for last word|
 
+---
 ### NEOTREE - the file explorer
-- in file
-+ "<leader>eo" n[e]o tree t[o]ggle
-+ "<leader>ef" n[e]o tree [f]orce open (if not want to use <C-w>)
+####  in file
+|key|usage|
+|---|-----|
+| **<leader>eo** |n[e]o tree t[o]ggle|
+| **<leader>ef** |n[e]o tree [f]orce open (if not want to use <C-w>)|
 
--inside neotree:
-+ "a" [a]dd file
-+ "d" [d]irectory
-+ "D" [D]elete file
-+ "t" open in new [t]ab
-+ "v" open in [v]ertical split
-+ "s" open in horzontal [s]plit
+#### inside neotree:
+|key|usage|
+|---|-----|
+| **a**|[a]dd file|
+| **d**|[d]irectory|
+| **D**|[D]elete file|
+| **t**|open in new [t]ab|
+| **v**|open in [v]ertical split|
+| **s**|open in horzontal [s]plit|
 
+---
 ### CMP
-- this is the auto-completion things!
-+ "<tab>"   next select
-+ "<S-tab>" previous select
-+ "Enter" or "<CR>" accept select (they are the same)
+#### this is the auto-completion things!
+|key|usage|
+|---|-----|
+| **<tab>** |next select|
+| **<S-tab>**|previous select|
+| **Enter** or|**<CR>** accept select (they are the same)|
 
+---
 ### TEXT OBJECTS
+
 - this is just extended vim motion
-- usage: verb + adj + noun (must be in order)
-- VERB:
-+ "c" [c]hange (delete and insert)
-+ "v" select or [v]isual mode
-+ "d" [d]elete
+- how to use: **verb** + **adj** + **noun** (must be in order)
 
-- ADJ:
-+ "i" [i]nside 
-+ "a" [a]round
+#### verb
+|key|mean|
+|---|-----|
+| **c**|[c]hange (delete and insert)|
+| **v**|select or [v]isual mode|
+| **d**|[d]elete|
 
-- NOUN:
-+ "f" [f]unction
-+ "b" [b]lock (while,for loops or if)
-+ "p" [p]aragraph (the continuous graph)
-+ "w" [w]ord
-+ "[","{","(" idk what to say here
+#### adj
+|key|mean|
+|---|-----|
+| **i** [i]nside|
+| **a** [a]round|
 
-+ example: ci[ : delete and insert in the [] in front of u 
+#### noun
+|key|mean|
+|---|-----|
+| **f**|[f]unction|
+| **b**|[b]lock (while,for loops or if)|
+| **p**|[p]aragraph (the continuous graph)|
+| **w**|[w]ord|
+| **[**,**{**,**(** | brackets ;-; |
 
++ example: **ci[**  delete and insert in the **[]** in front of u 
+
+---
 ### LSP
-- navigation 
-+ "gd" [g]o to [d]efinition
-+ "gD" [g]o to [D]eclearation
-+ "gt" [g]o to [t]ype definition
-+ "gi" [g]o to [i]mplementation
-+ "gr" [g]o to [r]eference
-+ "la" [l]ist [a]ll components (like function,variable...)
-+ "K"  show doc for current selecting word 
-- action
-+ "rn" [r]e[n]ame current selecting word safety
-+ "ca" [c]ode [a]tion : do things.... (if error log said fix available press this!)
+#### navigation 
+|key|usage|
+|---|-----|
+| **gd**|[g]o to [d]efinition |
+| **gD**|[g]o to [D]eclearation|
+| **gt**|[g]o to [t]ype definition|
+| **gi**|[g]o to [i]mplementation|  
+| **gr**|[g]o to [r]eference|
+| **la**|[l]ist [a]ll components (like function,variable...)|
+| **K** |show doc for current selecting word 
+#### action
+|key|usage|
+|---|-----|
+| **rn**|[r]e[n]ame current selecting word safety|
+| **ca**|[c]ode [a]tion  do things.... (if error log said fix available press this!)|
 
 ### SPELL (vim cmp for word)
-- motion:
-+ "[s" go to previous miss [s]pell word
-+ "]s" go to next miss [s]pell word
-- action:
-+ "<leader>cl" [c]hange [l]anguage
-+ "<leader>wa" [w]ord [a]dd
-+ "<leader>wua"[w]ord [a]dd [u]ndo 
+#### motion
+|key|usage|
+|---|-----|
+| **[s**|go to previous miss [s]pell word|
+| **]s**|go to next miss [s]pell word|
+#### action
+|key|usage|
+|---|-----|
+| **<leader>cl**|[c]hange [l]anguage|
+| **<leader>wa**|[w]ord [a]dd|
+| **<leader>wua**|[w]ord [a]dd [u]ndo |
 ### DIAGNOSE AND LOG
-- log:
-+ "<leader>lo" [l]og [o]pen
-+ "<leader>lc" [l]og [c]lose
+#### log
+|key|usage|
+|---|-----|
+| **<leader>lo** [l]og [o]pen| 
+| **<leader>lc** [l]og [c]lose|
 
-- diagnose (only enable when lsp return err)
-+ "<leader>df" [d]iagnose [f]loat open
-+ "[d"         [d]iagnose previous
-+ "]d"         [d]iagnose next
+#### diagnose (only enable when lsp is showing error)
+|key|usage|
+|---|-----|
+| **<leader>df**|[d]iagnose [f]loat open|
+| **[d**        |[d]iagnose previous|
+| **]d**        |[d]iagnose next|
 
-- terminal
-+ "<leader>th" [t]erminal open [h]orzontal
-+ "<leader>tv" [t]erminal open [v]ertical
-+ note: im too lazy to make a script for closing terminal
+#### terminal
+|key|usage|
+|---|-----|
+| **<leader>th**|[t]erminal open [h]orzontal| 
+| **<leader>tv**|[t]erminal open [v]ertical|
+- note im too lazy to make a script for closing terminal
 
  
 ### VIM SURROUND
 
 - See `lua/keymap/surround.lua`  
-- Common commands:
+- Common commands
   - `ysiw)` → surround current word with parentheses `(word)`  
   - `ds"` → delete surrounding quotes  
   - `cs"'` → change surrounding quotes from `"` to `'`

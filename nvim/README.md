@@ -45,7 +45,9 @@ init.lua              # Entry point: loads configs and creates popup
 - *<leader>* is **space**
 
 ## MUST KNOW TIPS:
+
 ---
+
 ### COMMAND ;-;
 |key|usage|
 |---|-----|
@@ -59,8 +61,11 @@ init.lua              # Entry point: loads configs and creates popup
              **:wa** (save all)
              **:qa** (quit all) 
              **q!**  (force quit)
+
 - **Lazy sync** for update plugins (is not recommended)
+
 ---
+
 ### BUFFER NAVIGATION
 |key|usage|
 |---|-----|
@@ -70,6 +75,7 @@ init.lua              # Entry point: loads configs and creates popup
 - for more at `:help wincmd`  
 
 ---
+
 ### ACTION IN VIM
 |key|usage|
 |---|-----|
@@ -83,7 +89,9 @@ init.lua              # Entry point: loads configs and creates popup
 | **<leader>p**| [p]aste (no cut)|
 
 ---
-### NORMAL MODE LINE MOTION:
+
+### NORMAL MODE LINE MOTION
+
 |key|usage|
 |---|-----|
 | **0** |  go for fist place in a line|
@@ -92,7 +100,9 @@ init.lua              # Entry point: loads configs and creates popup
 | **g_**|  go for last word|
 
 ---
+
 ### NEOTREE - the file explorer
+
 ####  in file
 |key|usage|
 |---|-----|
@@ -110,6 +120,7 @@ init.lua              # Entry point: loads configs and creates popup
 | **s**| open in horzontal [s]plit|
 
 ---
+
 ### CMP
 #### this is the auto-completion things!
 |key|usage|
@@ -119,6 +130,7 @@ init.lua              # Entry point: loads configs and creates popup
 | **Enter** or **<CR>** |accept select (they are the same)|
 
 ---
+
 ### TEXT OBJECTS
 
 - this is just extended vim motion
@@ -146,10 +158,12 @@ init.lua              # Entry point: loads configs and creates popup
 | **w**| [w]ord|
 | **[**,**{**,**(** | brackets ;-; |
 
-+ example: **ci[**  delete and insert in the **[]** in front of u 
+- example: **ci[**  delete and insert in the **[]** in front of u 
 
 ---
+
 ### LSP
+
 #### navigation 
 |key|usage|
 |---|-----|
@@ -160,11 +174,14 @@ init.lua              # Entry point: loads configs and creates popup
 | **gr**| [g]o to [r]eference|
 | **la**| [l]ist [a]ll components (like function,variable...)|
 | **K** | show doc for current selecting word 
+
 #### action
 |key|usage|
 |---|-----|
 | **rn**| [r]e[n]ame current selecting word safety|
 | **ca**| [c]ode [a]tion  do things.... (if error log said fix available press this!)|
+
+---
 
 ### SPELL (vim cmp for word)
 #### motion
@@ -172,12 +189,16 @@ init.lua              # Entry point: loads configs and creates popup
 |---|-----|
 | **[s**| go to previous miss [s]pell word|
 | **]s**| go to next miss [s]pell word|
+
 #### action
 |key|usage|
 |---|-----|
 | **<leader>cl**| [c]hange [l]anguage|
 | **<leader>wa**| [w]ord [a]dd|
 | **<leader>wua**| [w]ord [a]dd [u]ndo |
+
+---
+
 ### DIAGNOSE AND LOG
 #### log
 |key|usage|
@@ -199,7 +220,8 @@ init.lua              # Entry point: loads configs and creates popup
 | **<leader>tv**| [t]erminal open [v]ertical|
 - note im too lazy to make a script for closing terminal
 
- 
+ ---
+
 ### VIM SURROUND
 
 - See `lua/keymap/surround.lua`  

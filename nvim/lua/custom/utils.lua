@@ -22,6 +22,7 @@ function M.write_to_line(path, line, text)
     lines[line] = tostring(text)
 
     f = io.open(path, "w")
+    if f==nil then return end
     for _, l in ipairs(lines) do
         f:write(l .. "\n")
     end
@@ -44,7 +45,7 @@ function M.read_line(path, line)
     end
 
     f:close()
-    return  {} 
+    return  {}
 end
 
 return M

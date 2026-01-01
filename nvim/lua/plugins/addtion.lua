@@ -9,5 +9,11 @@ return{
         opts = {
             lang = "c",
         },
-    }
+    },
+    { "folke/twilight.nvim", cmd = "Twilight" },
+    {"sphamba/smear-cursor.nvim",opts={}},
+    {
+        "mg979/vim-visual-multi",
+        branch="master",
+    },
 }

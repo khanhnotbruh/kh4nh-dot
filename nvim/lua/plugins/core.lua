@@ -95,16 +95,14 @@ return{
             require("config.cmp")
         end,
     },
-    ---------------------------------------------------------------------------
-    -- UI + ANIMATION
-    ---------------------------------------------------------------------------
+    -----------------------------------------------------------------------------
+    -- UI
+    -----------------------------------------------------------------------------
     {
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
-
-
     {
         "folke/noice.nvim",
         event = "VeryLazy",
@@ -115,8 +113,6 @@ return{
         config = require("config.noice")
     },
 
-    { "folke/twilight.nvim", cmd = "Twilight" },
-    {"sphamba/smear-cursor.nvim",opts={}},
     ---------------------------------------------------------------------------
     -- NAVIGATION 
     ---------------------------------------------------------------------------
@@ -154,14 +150,4 @@ return{
             require("config.surround")
         end
     },
-    {
-        "mg979/vim-visual-multi",
-        branch=master,
-    },
-    {
-        "numToStr/Comment.nvim",
-        opts = {}
-    }
-
-
 }

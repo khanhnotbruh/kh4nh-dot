@@ -8,8 +8,7 @@ require("mason-lspconfig").setup({
         "clangd",
     },
 })
-
--- capabilities
+--capabilities
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- diagnostics
@@ -24,10 +23,14 @@ vim.diagnostic.config({
     update_in_insert = false,
     severity_sort = true,
 })
+--globals
+vim.lsp.config("*",{
+    capabilities=capabilities,
+    root_markers = { '.git' },
+})
 
 -- lua
 vim.lsp.config("lua_ls", {
-    capabilities = capabilities,
     settings = {
         Lua = {
             diagnostics = { globals = { "vim" } },
@@ -39,14 +42,13 @@ vim.lsp.config("lua_ls", {
 
 -- python
 vim.lsp.config("pyright", {
-    capabilities = capabilities,
     filetypes = { "python" },
 })
 
 -- c / cpp
 vim.lsp.config("clangd", {
-    capabilities = capabilities,
     filetypes = { "c", "cpp" },
+    root_markers = { '.clangd', 'compile_commands.json' },
 })
 
 -- ENABLE servers 

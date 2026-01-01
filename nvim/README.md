@@ -42,16 +42,18 @@ init.lua              # Entry point: loads configs and creates popup
 ---
 
 # ⌨ Keybindings
-- **<leader>** is **space**
+- *<leader>* is **space**
 
 ## MUST KNOW TIPS:
 
-## COMMAND ;-;
-- ":" to enter command mode
-- "w" for [s]ave
-- "q" for [q]uit
-- "a" for [a]ll
-- "!" for force
+### COMMAND ;-;
+|key|usage|
+|---|-----|
+|":"|to enter command mod|
+|"w"|for save|
+|"q"|for [q]uit|
+|"a"|for [a]ll|
+|"!"|for force|
 - you can do ":wqa"(save quit all)
              ":wa" (save all)
              ":qa" (quit all) 

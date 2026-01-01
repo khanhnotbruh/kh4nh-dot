@@ -84,18 +84,13 @@ return {
             "hrsh7th/cmp-buffer",
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
+            "rafamadriz/friendly-snippets",
+            "f3fora/cmp-spell",
         },
         config = function()
             require("config.cmp")
         end,
     },
-    {
-        "f3fora/cmp-spell",
-        dependencies = { "hrsh7th/nvim-cmp" },
-        event = "InsertEnter",
-    },
-
-
     ---------------------------------------------------------------------------
     -- UI + ANIMATION
     ---------------------------------------------------------------------------
@@ -104,7 +99,6 @@ return {
         event = "VeryLazy",
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
-
 
     {
         "folke/noice.nvim",

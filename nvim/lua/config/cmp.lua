@@ -19,7 +19,6 @@ cmp.setup({
         { name = "luasnip" },  -- snippets
         { name = "buffer" },   -- words in buffer
         { name = "path" },     -- filesystem paths
-        { name = "spell" },    -- spelling suggestions
     }),
 
     completion = {

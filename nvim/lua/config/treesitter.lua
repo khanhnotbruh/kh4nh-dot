@@ -1,10 +1,9 @@
+local keymap = require("keymap")
+local gt = keymap.ts_textobjects_move
+
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
-        "lua",
-        "c",
-        "cpp",
-        "python",
-        "bash",
+        "lua", "c", "cpp", "python", "bash",
     },
 
     auto_install = true,
@@ -17,32 +16,27 @@ require("nvim-treesitter.configs").setup({
         end,
     },
 
-    indent = {
-        enable = true,
-    },
+    indent = { enable = true },
 
     incremental_selection = {
         enable = true,
-        keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            node_decremental = "grm",
-            scope_incremental = "grc",
-        },
+        keymaps = keymap.ts_incremental_selection
     },
 
     textobjects = {
         select = {
             enable = true,
             lookahead = true,
-            keymaps = {
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
-                ["ab"] = "@block.outer",
-                ["ib"] = "@block.inner",
-            },
+            keymaps = keymap.ts_textobjects_select
+        },
+        move = {
+            enable = true,
+            set_jumps = true,
+            goto_next_start = gt.goto_next_start,
+            goto_next_end = gt.goto_next_end,
+            goto_previous_start = gt.goto_previous_start,
+            goto_previous_end = gt.goto_previous_end,
         },
     },
 })
+

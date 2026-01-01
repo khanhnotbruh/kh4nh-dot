@@ -1,6 +1,6 @@
-return{
+return {
     ---------------------------------------------------------------------------
-    -- TREE SITTER 
+    -- TREE SITTER
     ---------------------------------------------------------------------------
     {
         "nvim-treesitter/nvim-treesitter",
@@ -23,8 +23,29 @@ return{
     },
 
     ---------------------------------------------------------------------------
-    --NEO TREE (FILE EXPLORER) + UNDO TREE  
+    --NEO TREE (FILE EXPLORER) + UNDO TREE
     ---------------------------------------------------------------------------
+    {
+        "nvim-tree/nvim-web-devicons",
+        build = function()
+            -- download patched font if missing
+            local fira = vim.fn.expand("~/.local/share/fonts/FiraCode Nerd Font Complete.ttf")
+            if vim.fn.filereadable(fira) == 0 then
+                vim.fn.system({
+                    "curl", "-fLo",
+                    vim.fn.expand("~/.local/share/fonts/FiraCode.zip"),
+                    "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip",
+                })
+                vim.fn.system({
+                    "unzip", "-o",
+                    vim.fn.expand("~/.local/share/fonts/FiraCode.zip"),
+                    "-d", vim.fn.expand("~/.local/share/fonts/")
+                })
+                print("Installed FiraCode Nerd Font")
+            end
+        end,
+    },
+
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
@@ -37,19 +58,15 @@ return{
             require("config.neotree")
         end,
     },
-    {"mbbill/undotree",cmd = "UndotreeToggle"},
+    { "mbbill/undotree",           cmd = "UndotreeToggle" },
 
 
     ---------------------------------------------------------------------------
-    -- LSP + MASON
+    -- MASON
     ---------------------------------------------------------------------------
     {
-        "neovim/nvim-lspconfig",
-        event = { "BufReadPre", "BufNewFile" },
-        dependencies = {
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
-        },
+        "williamboman/mason.nvim",
+        build = ":MasonUpdate",
         config = function()
             require("config.lsp")
         end,
@@ -99,10 +116,10 @@ return{
         config = require("config.noice")
     },
 
-    { "folke/twilight.nvim", cmd = "Twilight" },
-    {"sphamba/smear-cursor.nvim",opts={}},
+    { "folke/twilight.nvim",       cmd = "Twilight" },
+    { "sphamba/smear-cursor.nvim", opts = {} },
     ---------------------------------------------------------------------------
-    -- NAVIGATION 
+    -- NAVIGATION
     ---------------------------------------------------------------------------
     {
         'nvim-telescope/telescope.nvim',
@@ -119,14 +136,14 @@ return{
     },
 
     ---------------------------------------------------------------------------
-    -- EDITING 
+    -- EDITING
     ---------------------------------------------------------------------------
     {
         "windwp/nvim-autopairs",
         config = function()
             require("nvim-autopairs").setup({
-                check_ts = true,  -- enable treesitter integration
-                fast_wrap = {},   -- optional: allows you to wrap existing text with brackets
+                check_ts = true, -- enable treesitter integration
+                fast_wrap = {},  -- optional: allows you to wrap existing text with brackets
             })
         end
     },
@@ -140,7 +157,7 @@ return{
     },
     {
         "mg979/vim-visual-multi",
-        branch=master,
+        branch = master,
     },
     {
         "numToStr/Comment.nvim",

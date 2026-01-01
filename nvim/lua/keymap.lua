@@ -2,10 +2,19 @@ local M = {}
 
 local map = vim.keymap.set
 
+-- copy and paste
+map("v", "<leader>c", '"+y')
+map("x", "<leader>p", "\"_dP")
+
+-- Move selected lines up/down and re-select after
+map("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+map("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+
+-- Indent/dedent and stay in visual mode
+map("v", "<", "<gv", { remap = false, noremap = true, silent = true })
+map("v", ">", ">gv", { remap = false, noremap = true, silent = true })
+
 map("n", "<leader>v", "<C-v>")
-
--- we already got < and > for tab and shift tab indenting
-
 map("n", "<leader>bp", ":bprevious<CR>", { noremap = true, silent = true })
 
 ------------------------------------
@@ -17,7 +26,7 @@ map("n", "<leader>lo", function()
     vim.cmd("lopen")
 end, { noremap = true, silent = true })
 
-map("n","<leader>cc",function ()
+map("n", "<leader>cc", function()
     vim.cmd("make")
     vim.cmd("copen")
 end)
@@ -186,7 +195,9 @@ M.surround = {
 -- CUSTOM
 ------------------------------------------------------------------------------
 local theme = require("custom.theme")
-map({ "n", "i" }, "<F5>", theme.theme_switch)
+map({ "n", "i" }, "<F5>", theme.theme_next)
+map("n", "<leader>F5>", theme.theme_prev)
+
 ------------------------------------------------------------------------------
 -- LSP
 ------------------------------------------------------------------------------
@@ -225,4 +236,50 @@ function M.lsp_on_attach(ev)
         vim.lsp.buf.format({ async = true })
     end, opts)
 end
+
+------------------------------------------------------------------------------
+-- TREE SITTER
+------------------------------------------------------------------------------
+
+M.ts_incremental_selection = {
+    init_selection = "gnn",
+    node_incremental = "grn",
+    node_decremental = "grm",
+    scope_incremental = "grc",
+}
+
+M.ts_textobjects_select = {
+    ["af"] = "@function.outer",
+    ["if"] = "@function.inner",
+    ["ac"] = "@class.outer",
+    ["ic"] = "@class.inner",
+    ["ab"] = "@block.outer",
+    ["ib"] = "@block.inner",
+}
+
+M.ts_textobjects_move = {
+    enable = true,
+    set_jumps = true, -- record jumps in jumplist
+    goto_next_start = {
+        ["]f"] = "@function.outer",
+        ["]]"] = "@class.outer",
+        ["]b"] = "@block.outer",
+    },
+    goto_next_end = {
+        ["]F"] = "@function.outer",
+        ["]["] = "@class.outer",
+        ["]B"] = "@block.outer",
+    },
+    goto_previous_start = {
+        ["[f"] = "@function.outer",
+        ["[["] = "@class.outer",
+        ["[b"] = "@block.outer",
+    },
+    goto_previous_end = {
+        ["[F"] = "@function.outer",
+        ["[]"] = "@class.outer",
+        ["[B"] = "@block.outer",
+    },
+}
+
 return M

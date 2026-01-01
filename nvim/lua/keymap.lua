@@ -201,8 +201,7 @@ map("n", "<leader>F5>", theme.theme_prev)
 ------------------------------------------------------------------------------
 -- LSP
 ------------------------------------------------------------------------------
-function M.lsp_on_attach(ev)
-    local opts = { buffer = ev.buf }
+function M.lsp_keymap(opts)
     -- LSP navigation
     map("n", "gd", vim.lsp.buf.definition, opts)
     map("n", "gD", vim.lsp.buf.declaration, opts)
@@ -219,17 +218,7 @@ function M.lsp_on_attach(ev)
     -- Diagnostics
     map("n", "[d", vim.diagnostic.goto_prev, opts)
     map("n", "]d", vim.diagnostic.goto_next, opts)
-    map("n", "<leader>lf", vim.diagnostic.open_float, opts)
-
-    map("n", "<leader>le", function()
-        vim.diagnostic.open_float(nil, {
-            severity = {
-                min = vim.diagnostic.severity.WARN,
-            },
-            border = "rounded",
-            source = "if_many",
-        })
-    end, { desc = "Diagnostics (warn + error)" })
+    map("n", "<leader>df", vim.diagnostic.open_float, opts)
 
     -- Format
     map("n", "<leader>f", function()

@@ -18,5 +18,6 @@ local people = {"Alice", "Bob", "Charlie"}
 M.greet(people)
 print("5! = " .. M.factorial(5))
 
+thisthingsupposetoreturnerr
 return M
 

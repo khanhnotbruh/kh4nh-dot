@@ -1,6 +1,6 @@
-return {
+return{
     ---------------------------------------------------------------------------
-    -- TREE SITTER
+    -- TREE SITTER 
     ---------------------------------------------------------------------------
     {
         "nvim-treesitter/nvim-treesitter",
@@ -23,7 +23,7 @@ return {
     },
 
     ---------------------------------------------------------------------------
-    --NEO TREE (FILE EXPLORER) + UNDO TREE
+    --NEO TREE (FILE EXPLORER) + UNDO TREE  
     ---------------------------------------------------------------------------
     {
         "nvim-tree/nvim-web-devicons",
@@ -58,15 +58,19 @@ return {
             require("config.neotree")
         end,
     },
-    { "mbbill/undotree",           cmd = "UndotreeToggle" },
+    {"mbbill/undotree",cmd = "UndotreeToggle"},
 
 
     ---------------------------------------------------------------------------
-    -- MASON
+    -- LSP + MASON
     ---------------------------------------------------------------------------
     {
-        "williamboman/mason.nvim",
-        build = ":MasonUpdate",
+        "neovim/nvim-lspconfig",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+        },
         config = function()
             require("config.lsp")
         end,
@@ -75,7 +79,7 @@ return {
     ---------------------------------------------------------------------------
     -- CMP
     ---------------------------------------------------------------------------
-    {
+     {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {
@@ -100,6 +104,7 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
 
+
     {
         "folke/noice.nvim",
         event = "VeryLazy",
@@ -110,10 +115,10 @@ return {
         config = require("config.noice")
     },
 
-    { "folke/twilight.nvim",       cmd = "Twilight" },
-    { "sphamba/smear-cursor.nvim", opts = {} },
+    { "folke/twilight.nvim", cmd = "Twilight" },
+    {"sphamba/smear-cursor.nvim",opts={}},
     ---------------------------------------------------------------------------
-    -- NAVIGATION
+    -- NAVIGATION 
     ---------------------------------------------------------------------------
     {
         'nvim-telescope/telescope.nvim',
@@ -130,14 +135,14 @@ return {
     },
 
     ---------------------------------------------------------------------------
-    -- EDITING
+    -- EDITING 
     ---------------------------------------------------------------------------
     {
         "windwp/nvim-autopairs",
         config = function()
             require("nvim-autopairs").setup({
-                check_ts = true, -- enable treesitter integration
-                fast_wrap = {},  -- optional: allows you to wrap existing text with brackets
+                check_ts = true,  -- enable treesitter integration
+                fast_wrap = {},   -- optional: allows you to wrap existing text with brackets
             })
         end
     },
@@ -151,7 +156,7 @@ return {
     },
     {
         "mg979/vim-visual-multi",
-        branch = master,
+        branch=master,
     },
     {
         "numToStr/Comment.nvim",

@@ -42,3 +42,4 @@ class Person:
 alice = Person("Alice")
 alice.say_hello()
 
+thisthingsupposetoreturnerr

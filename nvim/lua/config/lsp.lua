@@ -1,25 +1,16 @@
 -- mason
 require("mason").setup()
 
-require("mason-registry").refresh(function()
-    local servers = {
-        clangd = "clangd",
-        pyright = "pyright",
-        lua_ls = "lua-language-server",
-    }
-
-    local mr = require("mason-registry")
-    for _, pkg in pairs(servers) do
-        local p = mr.get_package(pkg)
-        if not p:is_installed() then
-            p:install()
-        end
-    end
-end)
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "lua_ls",
+        "pyright",
+        "clangd",
+    },
+})
 
 -- capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- diagnostics
 vim.diagnostic.config({
@@ -66,7 +57,13 @@ vim.lsp.enable({
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
-    callback = require("keymap").lsp_on_attach
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client then
+            client.server_capabilities.semanticTokensProvider = nil
+        end
+        require("keymap").lsp_keymap({ buffer = ev.buf })
+    end
 })
 
 

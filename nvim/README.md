@@ -49,11 +49,11 @@ init.lua              # Entry point: loads configs and creates popup
 ### COMMAND ;-;
 |key|usage|
 |---|-----|
-|**:**|to enter command mod|
-|**w**|for save|
-|**q**|for [q]uit|
-|**a**|for [a]ll|
-|**!**|for force|
+|**:** |to enter command mod|
+|**w** |for save|
+|**q** |for [q]uit|
+|**a** |for [a]ll|
+|**!** |for force|
 
 - you can do **:wqa**(save quit all)
              **:wa** (save all)
@@ -64,8 +64,8 @@ init.lua              # Entry point: loads configs and creates popup
 ### BUFFER NAVIGATION
 |key|usage|
 |---|-----|
-| **<C-w>** with **h** **j** **k** **l** or arrow keys| move between buffer
-| **C-W>T**: create new tab for buffer
+| **<C-w>** with **h** **j** **k** **l** or arrow keys| move between buffer|
+| **C-W>T**| create new tab for buffer|
 
 - for more at `:help wincmd`  
 
@@ -73,14 +73,14 @@ init.lua              # Entry point: loads configs and creates popup
 ### ACTION IN VIM
 |key|usage|
 |---|-----|
-| **i** [i]nsert mode
-| **v** [v]isual mode (the select mode)
-| **d** [d]elete
-| **s** cut and insert
-| **c** [c]hange (no copy)
-| **y** [y]ank (copy)
-| **p** [p]ut  (paste and cut)
-| **<leader>p**[p]aste (no cut)
+| **i** |[i]nsert mode|
+| **v** |[v]isual mode (the select mode)|
+| **d** |[d]elete|
+| **s** |cut and insert|
+| **c** |[c]hange (no copy)|
+| **y** |[y]ank (copy)|
+| **p** |[p]ut  (paste and cut)|
+| **<leader>p**| [p]aste (no cut)|
 
 ---
 ### NORMAL MODE LINE MOTION:
@@ -102,12 +102,12 @@ init.lua              # Entry point: loads configs and creates popup
 #### inside neotree:
 |key|usage|
 |---|-----|
-| **a**|[a]dd file|
-| **d**|[d]irectory|
-| **D**|[D]elete file|
-| **t**|open in new [t]ab|
-| **v**|open in [v]ertical split|
-| **s**|open in horzontal [s]plit|
+| **a**| [a]dd file|
+| **d**| [d]irectory|
+| **D**| [D]elete file|
+| **t**| open in new [t]ab|
+| **v**| open in [v]ertical split|
+| **s**| open in horzontal [s]plit|
 
 ---
 ### CMP
@@ -115,8 +115,8 @@ init.lua              # Entry point: loads configs and creates popup
 |key|usage|
 |---|-----|
 | **<tab>** |next select|
-| **<S-tab>**|previous select|
-| **Enter** or|**<CR>** accept select (they are the same)|
+| **<S-tab>** |previous select|
+| **Enter** or **<CR>** |accept select (they are the same)|
 
 ---
 ### TEXT OBJECTS
@@ -127,23 +127,23 @@ init.lua              # Entry point: loads configs and creates popup
 #### verb
 |key|mean|
 |---|-----|
-| **c**|[c]hange (delete and insert)|
-| **v**|select or [v]isual mode|
-| **d**|[d]elete|
+| **c**| [c]hange (delete and insert)|
+| **v**| select or [v]isual mode|
+| **d**| [d]elete|
 
 #### adj
 |key|mean|
 |---|-----|
-| **i** [i]nside|
-| **a** [a]round|
+| **i**|  [i]nside|
+| **a**|  [a]round|
 
 #### noun
 |key|mean|
 |---|-----|
-| **f**|[f]unction|
-| **b**|[b]lock (while,for loops or if)|
-| **p**|[p]aragraph (the continuous graph)|
-| **w**|[w]ord|
+| **f**| [f]unction|
+| **b**| [b]lock (while,for loops or if)|
+| **p**| [p]aragraph (the continuous graph)|
+| **w**| [w]ord|
 | **[**,**{**,**(** | brackets ;-; |
 
 + example: **ci[**  delete and insert in the **[]** in front of u 
@@ -153,50 +153,50 @@ init.lua              # Entry point: loads configs and creates popup
 #### navigation 
 |key|usage|
 |---|-----|
-| **gd**|[g]o to [d]efinition |
-| **gD**|[g]o to [D]eclearation|
-| **gt**|[g]o to [t]ype definition|
-| **gi**|[g]o to [i]mplementation|  
-| **gr**|[g]o to [r]eference|
-| **la**|[l]ist [a]ll components (like function,variable...)|
-| **K** |show doc for current selecting word 
+| **gd**| [g]o to [d]efinition |
+| **gD**| [g]o to [D]eclearation|
+| **gt**| [g]o to [t]ype definition|
+| **gi**| [g]o to [i]mplementation|  
+| **gr**| [g]o to [r]eference|
+| **la**| [l]ist [a]ll components (like function,variable...)|
+| **K** | show doc for current selecting word 
 #### action
 |key|usage|
 |---|-----|
-| **rn**|[r]e[n]ame current selecting word safety|
-| **ca**|[c]ode [a]tion  do things.... (if error log said fix available press this!)|
+| **rn**| [r]e[n]ame current selecting word safety|
+| **ca**| [c]ode [a]tion  do things.... (if error log said fix available press this!)|
 
 ### SPELL (vim cmp for word)
 #### motion
 |key|usage|
 |---|-----|
-| **[s**|go to previous miss [s]pell word|
-| **]s**|go to next miss [s]pell word|
+| **[s**| go to previous miss [s]pell word|
+| **]s**| go to next miss [s]pell word|
 #### action
 |key|usage|
 |---|-----|
-| **<leader>cl**|[c]hange [l]anguage|
-| **<leader>wa**|[w]ord [a]dd|
-| **<leader>wua**|[w]ord [a]dd [u]ndo |
+| **<leader>cl**| [c]hange [l]anguage|
+| **<leader>wa**| [w]ord [a]dd|
+| **<leader>wua**| [w]ord [a]dd [u]ndo |
 ### DIAGNOSE AND LOG
 #### log
 |key|usage|
 |---|-----|
-| **<leader>lo** [l]og [o]pen| 
-| **<leader>lc** [l]og [c]lose|
+| **<leader>lo**|  [l]og [o]pen| 
+| **<leader>lc**|  [l]og [c]lose|
 
 #### diagnose (only enable when lsp is showing error)
 |key|usage|
 |---|-----|
-| **<leader>df**|[d]iagnose [f]loat open|
-| **[d**        |[d]iagnose previous|
-| **]d**        |[d]iagnose next|
+| **<leader>df**| [d]iagnose [f]loat open|
+| **[d**        | [d]iagnose previous|
+| **]d**        | [d]iagnose next|
 
 #### terminal
 |key|usage|
 |---|-----|
-| **<leader>th**|[t]erminal open [h]orzontal| 
-| **<leader>tv**|[t]erminal open [v]ertical|
+| **<leader>th**| [t]erminal open [h]orzontal| 
+| **<leader>tv**| [t]erminal open [v]ertical|
 - note im too lazy to make a script for closing terminal
 
  

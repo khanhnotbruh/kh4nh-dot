@@ -1,0 +1,2 @@
+-- this is empty bc idk what to put there
+-- you can config whaterver you want but for me the defeult is enough

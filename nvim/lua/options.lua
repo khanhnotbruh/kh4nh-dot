@@ -13,7 +13,7 @@ vim.opt.wrap=false
 
 vim.opt.swapfile=false
 vim.opt.backup=false
---vim.opt.undodir=os.getenv("HOME") .. "/.vim/undodir"  --uncomment this on linux--
+vim.opt.undodir=os.getenv("HOME") .. "/.vim/undodir"  --uncomment this on linux--
 vim.opt.undofile=true
 
 vim.g.mapleader=" "
@@ -30,3 +30,6 @@ vim.opt.updatetime=50
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 99
+
+-- if you hate mouse ,uncomment this
+vim.o.mouse="a"

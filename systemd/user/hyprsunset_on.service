@@ -1,0 +1,10 @@
+[Unit]
+Description=Hyprsunset Night Light
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hyprsunset --temperature 5000
+ExecStop=/usr/bin/pkill -x hyprsunset
+Restart=no

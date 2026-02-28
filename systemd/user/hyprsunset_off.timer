@@ -1,0 +1,11 @@
+[Unit]
+Description=Disable Hyprsunset in the morning
+
+[Timer]
+OnCalendar=*-*-* 07:00
+Persistent=true
+Unit=hyprsunset_off.service
+
+[Install]
+WantedBy=timers.target
+

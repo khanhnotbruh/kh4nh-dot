@@ -1,0 +1,11 @@
+[Unit]
+Description=Enable Hyprsunset at night
+
+[Timer]
+OnCalendar=*-*-* 19:00
+Persistent=true
+Unit=hyprsunset_on.service
+
+[Install]
+WantedBy=timers.target
+

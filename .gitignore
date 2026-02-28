@@ -1,0 +1,25 @@
+/lua/mini-deps-state.json
+*.log
+*.png
+*.jpg
+*.mp4
+/spicetify/Backup/
+/spicetify/Extracted/
+/spicetify/CustomApps/
+/spicetify/Extensions/
+/spicetify/Themes/*/git/ # Ignore nested git info in themes
+__pycache__/
+*.py[cod]
+*.o
+*.so
+/pkg/
+/src/
+/bin/
+*.pem
+*.key
+*.pub
+id_rsa*
+.env
+.secrets
+google-chrome/
+.cache/

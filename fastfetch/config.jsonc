@@ -1,0 +1,96 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+
+
+  "image": {
+    "type": "kitty",
+    "source": "~/.config/fastfetch/miku_chibi.png",
+    "width": 25,
+    "padding": {
+      "top": 2,
+      "left": 1,
+      "right": 2
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "constants": [
+      "─────────────────"
+    ],
+    "key": {
+      "type": "icon",
+      "paddingLeft": 2
+    }
+  },
+  "modules": [
+    {
+      "type": "custom", 
+      "format": "┌{$1} {#}Hardware{#} {$1}┐"
+    },
+    "host",
+    {
+      "type":"cpu",
+      "format":"{1}"
+    },{
+    "type":"gpu",
+    "format":"{1}"
+    },
+    {
+      "type":"disk",
+      "format":"{1}/{2}"
+    },
+    {
+      "type":"memory",
+      "format":"{1}/{2}"
+    },{
+    "type":"swap",
+    "format":"{1}/{2}"
+    },{
+    "type":"display",
+    "format":"resolution: {1} x {2}"
+    },
+
+
+    "poweradapter",
+    "bluetooth",
+    "gamepad",
+        {
+          "type": "custom", 
+          "format": "└{$1}{#}──────────{#}{$1}┘"
+        },
+        {
+          "type": "custom",
+          "format": ""
+        },
+        {
+          "type":"custom",
+          "format": "┌{$1} {#}Software{#} {$1}┐"
+        },
+
+        {
+          "type": "title",
+          "keyIcon": "",
+          "key": "Title", 
+          "format": "{user-name}@{host-name}"
+        },
+        "os",
+        "lm",
+        "de",
+        "wm",
+        "uptime",
+        {
+          "type": "localip",
+          "compact": true
+        },
+        "locale",
+        {
+          "type": "custom", 
+          "format": "└{$1}{#}──────────{#}{$1}┘"
+        },
+        {
+          "type": "colors",
+          "paddingLeft": 5,
+          "symbol": "circle"
+        }
+  ]
+}

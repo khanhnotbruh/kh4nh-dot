@@ -1,0 +1,39 @@
+{
+  "appearance": {
+    "font": {
+      "family": {
+  "clock": "Rubik",
+        "material": "Material Symbols Rounded",
+        "mono": "CaskaydiaCove NF",
+        "sans": "Rubik"
+      },
+      "size": {
+        "scale": 1
+      }
+    },
+    "padding": {
+      "scale": 1
+    },
+    "rounding": {
+      "scale": 1
+    },
+    "spacing": {
+      "scale": 1
+    },
+    "transparency": {
+      "enabled": false,
+      "base": 0.85,
+      "layers": 0.4
+    }
+  },
+  "border":{
+    "enabled":true,
+    "color":"#111213",
+    "thickness":10,
+    "rounding":20
+  },
+  "path":{
+    "config":"/home/khanh/.config/quickshell/qs_desktop/config.json",
+    "wallpapers":"/home/khanh/wallpapers"
+  }
+}

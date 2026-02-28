@@ -4,10 +4,6 @@
 *.jpg
 *.mp4
 /spicetify/Backup/
-/spicetify/Extracted/
-/spicetify/CustomApps/
-/spicetify/Extensions/
-/spicetify/Themes/*/git/ # Ignore nested git info in themes
 __pycache__/
 *.py[cod]
 *.o
@@ -21,5 +17,6 @@ __pycache__/
 id_rsa*
 .env
 .secrets
-google-chrome/
+/google-chrome/
+/mozila/
 .cache/

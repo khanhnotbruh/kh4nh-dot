@@ -1,4 +1,3 @@
-pragma singleton
 import QtQuick
 import QtQuick.Shapes
 import "../../config"
@@ -15,10 +14,9 @@ Item {
     property string usageUnit:"°C"
     property string text:"empty"
     property color textColor:Config
-    property color usageTextColor:
-    property color trackColor: 
-    property color accentColor:  
-
+    property color usageTextColor:Config.dashboard.textColor
+    property color trackColor: Config.dashboard.trackColor
+    property color accentColor:Config.dashboard.statusColor  
     //relative property
     property int strokeWidth:width * 0.1
     property int usageSize:width   * 0.22

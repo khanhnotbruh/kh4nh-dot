@@ -3,6 +3,8 @@ import Quickshell.Wayland
 import QtQuick
 import QtQuick.Shapes
 import "../../config"
+import "../../services"
+import "../widgets"
 
 PanelWindow {
   id: root
@@ -104,6 +106,16 @@ PanelWindow {
         radiusX: root.rounding
         radiusY: root.rounding
       }
+    }
+  }
+  //the content
+  Item{
+    anchors.fill:parent
+    Status{
+      visible:showing
+      width:80
+      text:SysInfo.cpuName
+      usage:SysInfo.cpuTemp
     }
   }
 }

@@ -13,7 +13,9 @@ Item {
     property real maxAngle:220
     property string usageUnit:"°C"
     property string text:"empty"
-    property color textColor:Config
+    property color textColor:Config.dashboard.textColor
+    property color nameColor:Config.dashboard.nameColor
+    
     property color usageTextColor:Config.dashboard.textColor
     property color trackColor: Config.dashboard.trackColor
     property color accentColor:Config.dashboard.statusColor  
@@ -22,13 +24,11 @@ Item {
     property int usageSize:width   * 0.22
     property int textSize:usageSize* 0.5
     property int textOffset:height * 0.1
-
-    anchors.centerIn:parent
-
     //the shape:
     //use outline as progress bar and capstyle for rounded looking
     Shape{
-      anchors.centerIn:parent
+      id:status
+      anchors.fill:parent
       layer.enabled:true
       layer.samples:4
       ShapePath{
@@ -62,7 +62,6 @@ Item {
     }
     Column{
       anchors.centerIn:parent
-      anchors.verticalCenterOffset: root.textOffset
       spacing:-2
       Text {
         id: usageText
@@ -79,7 +78,7 @@ Item {
       }
       Text{
         text:root.text
-        color:root.textColor
+        color:root.nameColor
         font.pixelSize:root.textSize
         anchors.horizontalCenter: parent.horizontalCenter
       }

@@ -107,15 +107,9 @@ PanelWindow {
         radiusY: root.rounding
       }
     }
-  }
-  //the content
-  Item{
-    anchors.fill:parent
-    Status{
-      visible:showing
-      width:80
-      text:SysInfo.cpuName
-      usage:SysInfo.cpuTemp
+    SystemInfo{
+      opacity:showing?100:0
+      Behavior on opacity { NumberAnimation { duration: 400} }
     }
   }
 }

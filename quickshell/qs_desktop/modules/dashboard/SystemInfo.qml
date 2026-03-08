@@ -8,8 +8,10 @@ import "../../services"
 Item{
   id:root
   anchors.fill:parent
-  property int sysWidth:200
+  property int sysWidth:210
   property int sysHeight:100
+  property int spacing:10
+  property int rounding:10
   RowLayout{
     anchors.centerIn:parent
     ColumnLayout{
@@ -17,23 +19,25 @@ Item{
         color:"#51332410"
         height:root.sysHeight
         width:root.sysWidth
-        radius:20
+        radius:root.rounding
         RowLayout{
           Status{
             anchors{
               top:parent.top
               topMargin:10
             }
-            text:SysInfo.cpuName
+            text:"CPU"
             usage:SysInfo.cpuTemp
+            usageUnit:"°C"
           }
           Status{
             anchors{
               top:parent.top
               topMargin:10
             }
-            text:SysInfo.cpuName
-            usage:SysInfo.cpuTemp
+            text:"CPU"
+            usage:SysInfo.cpuUsage
+            usageUnit:"%"
           }
         }
       }
@@ -41,23 +45,25 @@ Item{
         color:"#51332410"
         height:root.sysHeight
         width:root.sysWidth
-        radius:20
+        radius:root.rounding
         RowLayout{
           Status{
             anchors{
               top:parent.top
               topMargin:10
             }
-            text:SysInfo.cpuName
-            usage:SysInfo.cpuTemp
+            text:"GPU"
+            usage:SysInfo.gpuTemp
+            usageUnit:"°C"
           }
           Status{
             anchors{
               top:parent.top
               topMargin:10
             }
-            text:SysInfo.cpuName
-            usage:SysInfo.cpuTemp
+            text:"GPU"
+            usage:SysInfo.gpuUsage
+            usageUnit:"%"
           }
         }
       }
@@ -67,17 +73,25 @@ Item{
       height:root.sysWidth
       width:root.sysHeight
       Layout.fillHeight: true
-      radius:20
+      radius:root.rounding
       ColumnLayout{
         Status{
-          Layout.fillHeight: true
-          text:SysInfo.cpuName
-          usage:SysInfo.cpuTemp
+          anchors{
+            top:parent.top
+            topMargin:10
+          }
+          text:"RAM"
+          usage:SysInfo.ramUsage
+          usageUnit:"%"
         }
         Status{
-          Layout.fillHeight: true
-          text:SysInfo.cpuName
-          usage:SysInfo.cpuTemp
+          anchors{
+            bottom:parent.bottom
+            bottomMargin:-10
+          }
+          text:"Disk"
+          usage:SysInfo.diskUsage
+          usageUnit:"%"
         }
       }
     }

@@ -42,4 +42,5 @@ require("config.mini")
 require("config.lsp")
 require("config.treesitter")
 require("keymap")
+require("custom.autocmd")
 

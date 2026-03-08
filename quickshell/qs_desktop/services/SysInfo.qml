@@ -5,6 +5,7 @@ import QtQuick
 
 Singleton {
     id: sys
+    property bool showing:false
     //---------------------gpu stuff-----------------------//
     property string activeCard: "card1" 
     property string gpuName:""
@@ -84,15 +85,38 @@ Singleton {
         }
       }
     }
-    Timer {
+    //---------------------memory stuff-----------------------//
+    property int diskUsage:0
+    property int ramUsage:0
+    Process {
+      id: diskProc
+      command: ["bash", "-c", "df / --output=pcent | tail -n 1 | tr -dc '0-9'"]
+      stdout: StdioCollector {
+        onStreamFinished: {
+          sys.diskUsage = parseInt(this.text.trim())
+        }
+      }
+    }
+    Process{
+      id:ramProc
+      command:["bash","-c","free | awk '/Mem:/ {print int($3/$2 * 100)}'"]
+      stdout: StdioCollector {
+        onStreamFinished: {
+          sys.ramUsage = parseInt(this.text.trim())
+        }
+      }
+    }
+    Timer{
       id: pollingTimer
         interval: 500
         repeat: true
         onTriggered: {
-            gpuUsageProc.running=true;
-            gpuTempProc.running=true;
-            cpuUsageProc.running=true;
-            cpuTempProc.running=true;
+            gpuUsageProc.running=showing;
+            gpuTempProc.running=showing;
+            cpuUsageProc.running=showing;
+            cpuTempProc.running=showing;
+            ramProc.running=showing;
+            diskProc.running=showing;
         }
     }
     Component.onCompleted: {

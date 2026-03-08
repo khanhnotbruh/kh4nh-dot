@@ -42,7 +42,7 @@ require("mini.tabline").setup()
 require("mini.keymap").setup()
 -------------------- text editing ------------------
 require("mini.ai").setup()
-require("mini.move").setup()
+--require("mini.move").setup() remove bc M-h,j,k,l
 require("mini.pairs").setup()
 require("mini.surround").setup()
 require("mini.splitjoin").setup()
@@ -58,7 +58,25 @@ require("mini.completion").setup({
   },
   delay = { completion = 100, info = 100, signature = 50 },
 })
-require("mini.files").setup({})
+
+require("mini.files").setup({
+  content = {
+    sort = function(entries)
+      table.sort(entries, function(a, b)
+        if a.fs_type ~= b.fs_type then
+          return a.fs_type == "directory"
+        end
+        local ext_a = a.name:match("%.([^.]+)$") or ""
+        local ext_b = b.name:match("%.([^.]+)$") or ""
+        if ext_a == ext_b then
+          return a.name < b.name
+        end
+        return ext_a < ext_b
+      end)
+      return entries
+    end,
+  },
+})
 
 -------------------- statusline ------------------
 local sl=require("mini.statusline")
@@ -72,9 +90,6 @@ local function fixed_width(str, width)
     return str .. string.rep(" ", width - len)
   end
   return str
-end
-local function clock()
-  return 
 end
 -- set color for each block
 local function set_hl(mode_hl)

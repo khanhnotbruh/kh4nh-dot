@@ -14,11 +14,11 @@ PanelWindow {
   property int borderThick: Config.border.thickness
   property int rounding: Config.dashboard.rounding
   property int cornerDuration: slideDuration*(rounding/(Screen.height/3))*6
-  property int boardWidth: Screen.width / 3
+  property int boardWidth: Screen.width / 4
   property color boardColor: Config.border.color
 
   // --- 2. LOGIC ---
-  property bool showing: false
+  property bool showing: SysInfo.showing
   property int boardHeight: showing ? Screen.height/3:0
   property real topCornerRelativeY: showing ? rounding:0
   Behavior on boardHeight { NumberAnimation { duration: root.slideDuration; easing.type: Easing.BezierSpline } }
@@ -35,8 +35,8 @@ PanelWindow {
 
   anchors { left: true; top: true; right: true }
   margins {
-    left: (Screen.width / 3) - rounding
-    right: (Screen.width / 3) - rounding 
+    left: (Screen.width-boardWidth)/2 - rounding
+    right:(Screen.width-boardWidth)/2 - rounding 
   }
   mask: Region { item: visualContent }
 
@@ -53,8 +53,8 @@ PanelWindow {
         rightMargin:root.rounding
       }
       hoverEnabled: true
-      onEntered: root.showing = true
-      onExited: root.showing = false
+      onEntered: SysInfo.showing = true
+      onExited: SysInfo.showing = false
     }
     ShapePath {
       startX: 0
@@ -108,8 +108,11 @@ PanelWindow {
       }
     }
     SystemInfo{
+      id:sysContent
       opacity:showing?100:0
-      Behavior on opacity { NumberAnimation { duration: 400} }
+      sysHeight:(root.implicitHeight-root.rounding-sysContent.spacing*3)/2
+      rounding:root.rounding/2
+      Behavior on opacity { NumberAnimation { duration: 200} }
     }
   }
 }

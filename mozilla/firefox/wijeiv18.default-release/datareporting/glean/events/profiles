@@ -161,3 +161,6 @@
 {"timestamp":4869322,"category":"profiles.default","name":"updated","extra":{"glean_timestamp":"1769956246523"},"execution_counter":5}
 {"timestamp":4900651,"category":"profiles.default","name":"updated","extra":{"glean_timestamp":"1769956277852"},"execution_counter":5}
 {"timestamp":4974071,"category":"profiles.default","name":"updated","extra":{"glean_timestamp":"1769956351272"},"execution_counter":5}
+{"timestamp":1554556,"category":"glean","name":"restarted","extra":{"glean.startup.date":"2026-03-16T20:22+07:00","glean_timestamp":"1773667345366"},"execution_counter":6}
+{"timestamp":1548474,"category":"profiles.default","name":"updated","extra":{"glean_timestamp":"1773667339283"},"execution_counter":6}
+{"timestamp":1554086,"category":"profiles.default","name":"updated","extra":{"glean_timestamp":"1773667344896"},"execution_counter":6}

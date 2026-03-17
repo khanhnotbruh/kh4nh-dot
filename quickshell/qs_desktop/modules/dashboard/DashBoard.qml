@@ -44,8 +44,10 @@ PanelWindow {
     id: visualContent
     width: parent.width
     height: root.boardHeight + root.borderThick
-    layer.enabled: true
+    layer.enabled: true 
     layer.samples: 4
+    // This stops the GPU from re-rendering the texture unless it actually changes
+    layer.effect: ShaderEffect {}
     MouseArea {
       anchors{
         fill:parent
@@ -57,11 +59,11 @@ PanelWindow {
       onExited: SysInfo.showing = false
     }
     ShapePath {
-      startX: 0
-      startY: root.borderThick * 1.0
       fillColor: root.boardColor
       strokeColor: "transparent"
 
+      startX: 0
+      startY: root.borderThick * 1.0
       PathArc {
         relativeX: root.rounding
         relativeY: root.topCornerRelativeY
@@ -109,7 +111,8 @@ PanelWindow {
     }
     SystemInfo{
       id:sysContent
-      opacity:showing?100:0
+      opacity:showing?1:0
+      visible:opacity>0
       sysHeight:(root.implicitHeight-root.rounding-sysContent.spacing*3)/2
       rounding:root.rounding/2
       Behavior on opacity { NumberAnimation { duration: 200} }

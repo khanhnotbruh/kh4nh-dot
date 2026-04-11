@@ -1,27 +1,27 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-vim.lsp.semantic_tokens.enable(false)
-vim.lsp.config("lua_ls",{
-  capabilities = capabilities,
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client then
+      client.server_capabilities.semanticTokensProvider = nil
+    end
+  end,
 })
--- clangd config
+vim.lsp.config("lua_ls", { capabilities = capabilities })
 vim.lsp.config("clangd", {
   capabilities = capabilities,
-  cmd = { "clangd", "--background-index" },
+  cmd = { "clangd", "--background-index", "--clang-tidy" },
 })
-
--- pyright config
 vim.lsp.config("pyright", {
   capabilities = capabilities,
   settings = {
     python = {
-      analysis = {
-        typeCheckingMode = "basic",
-      },
+      analysis = { typeCheckingMode = "basic" },
     },
   },
 })
--- Enable them
+
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("clangd")
 vim.lsp.enable("pyright")

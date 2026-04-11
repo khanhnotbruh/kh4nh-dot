@@ -1,0 +1,10 @@
+# GIMP gimp-eraser-tool options
+
+(brush "2. Hardness 050")
+(dynamics "Pressure Size")
+(palette "Color History")
+(brush-size 3)
+(brush-aspect-ratio -0.30000000000000004)
+(brush-hardness 0.5)
+
+# end of gimp-eraser-tool options

@@ -1,15 +1,15 @@
 [drawing]
 default_color = [
-    255,
+    0,
     0,
     0,
 ]
-default_thickness = 12.0
+default_thickness = 1.0
 default_eraser_size = 12.0
 default_eraser_mode = "brush"
 marker_opacity = 0.32
 default_fill_enabled = false
-default_font_size = 32.0
+default_font_size = 8.381048387096774
 hit_test_tolerance = 6.0
 hit_test_linear_threshold = 400
 undo_stack_limit = 100
@@ -104,7 +104,7 @@ text_color = [
 ]
 
 [ui.click_highlight]
-enabled = true
+enabled = false
 show_on_highlight_tool = false
 radius = 24.0
 outline_thickness = 4.0
@@ -128,8 +128,8 @@ enabled = true
 
 [ui.toolbar]
 layout_mode = "regular"
-top_pinned = true
-side_pinned = true
+top_pinned = false
+side_pinned = false
 use_icons = true
 scale = 1.0
 show_more_colors = false
@@ -246,6 +246,57 @@ default_pen_color = [
     0.969,
     0.89,
     0.784,
+]
+auto_adjust_pen = true
+persist = true
+pinned = false
+
+[[boards.items]]
+id = "board-6"
+name = "Board 6"
+background = [
+    0.992,
+    0.992,
+    0.992,
+]
+default_pen_color = [
+    0.0,
+    0.0,
+    0.0,
+]
+auto_adjust_pen = true
+persist = true
+pinned = false
+
+[[boards.items]]
+id = "board-7"
+name = "Board 7"
+background = [
+    0.992,
+    0.992,
+    0.992,
+]
+default_pen_color = [
+    0.0,
+    0.0,
+    0.0,
+]
+auto_adjust_pen = true
+persist = true
+pinned = false
+
+[[boards.items]]
+id = "board-8"
+name = "Board 8"
+background = [
+    0.992,
+    0.992,
+    0.992,
+]
+default_pen_color = [
+    0.0,
+    0.0,
+    0.0,
 ]
 auto_adjust_pen = true
 persist = true

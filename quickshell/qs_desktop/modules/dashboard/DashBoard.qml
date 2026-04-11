@@ -1,121 +1,81 @@
 import Quickshell
 import Quickshell.Wayland
 import QtQuick
-import QtQuick.Shapes
-import "../../config"
-import "../../services"
-import "../widgets"
-
+import QtQuick.Controls
+import QtQuick.Layouts
 PanelWindow {
   id: root
+  anchors { 
+    top: true 
+    left: true 
+    right: true 
+    bottom:true 
+  }
+  property int velocityThreshold:60
+  property int dragThreshold:300
 
-  // --- 1. CONFIG ---
-  property int slideDuration: 250
-  property int borderThick: Config.border.thickness
-  property int rounding: Config.dashboard.rounding
-  property int cornerDuration: slideDuration*(rounding/(Screen.height/3))*6
-  property int boardWidth: Screen.width / 4
-  property color boardColor: Config.border.color
-
-  // --- 2. LOGIC ---
-  property bool showing: SysInfo.showing
-  property int boardHeight: showing ? Screen.height/3:0
-  property real topCornerRelativeY: showing ? rounding:0
-  Behavior on boardHeight { NumberAnimation { duration: root.slideDuration; easing.type: Easing.BezierSpline } }
-  Behavior on topCornerRelativeY { NumberAnimation { duration: root.cornerDuration } }
-
-  property real sideRelHeight: boardHeight - (2 * rounding) - borderThick
-
-  // --- 3. WINDOW SETUP ---
   WlrLayershell.layer: WlrLayer.Top
   exclusiveZone: -1
-  focusable: false
-  implicitHeight: borderThick + Screen.height / 3
   color: "transparent"
-
-  anchors { left: true; top: true; right: true }
-  margins {
-    left: (Screen.width-boardWidth)/2 - rounding
-    right:(Screen.width-boardWidth)/2 - rounding 
+  mask: Region { item: drawer }
+  Rectangle {
+    anchors.fill: parent
+    color: drawer.color
+    opacity:1-(-drawer.y/root.height)
+    visible: opacity > 0
   }
-  mask: Region { item: visualContent }
-
-  Shape {
-    id: visualContent
-    width: parent.width
-    height: root.boardHeight + root.borderThick
-    layer.enabled: true 
-    layer.samples: 4
-    // This stops the GPU from re-rendering the texture unless it actually changes
-    layer.effect: ShaderEffect {}
-    MouseArea {
+  Rectangle{
+    id:drawer
+    height:root.height
+    property real openY:0
+    property real closeY:-drawer.height+ handle.height
+    color:"#2B2D420f"
+    anchors{
+      left:parent.left
+      right:parent.right
+    }
+    y:closeY
+    Behavior on y{
+      id:yBehavior
+      enabled:drawer.height>0
+      NumberAnimation{
+        duration: 250
+      }
+    }
+    // the gray handle
+    Rectangle {
+      id:handle
+      width: 150; height: 8
+      radius: 15
+      color: "gray"
       anchors{
-        fill:parent
-        leftMargin:root.rounding
-        rightMargin:root.rounding
-      }
-      hoverEnabled: true
-      onEntered: SysInfo.showing = true
-      onExited: SysInfo.showing = false
-    }
-    ShapePath {
-      fillColor: root.boardColor
-      strokeColor: "transparent"
-
-      startX: 0
-      startY: root.borderThick * 1.0
-      PathArc {
-        relativeX: root.rounding
-        relativeY: root.topCornerRelativeY
-        radiusX: root.rounding
-        radiusY: root.rounding
-      }
-
-      PathLine {
-        relativeX: 0
-        relativeY: root.sideRelHeight
-      }
-
-      PathArc {
-        relativeX: root.rounding
-        relativeY: root.rounding
-        radiusX: root.rounding
-        radiusY: root.rounding
-        direction: PathArc.Counterclockwise
-      }
-
-      PathLine {
-        relativeX: root.boardWidth - (2 * root.rounding)
-        relativeY: 0
-      }
-
-      PathArc {
-        relativeX: root.rounding
-        relativeY: -root.rounding
-        radiusX: root.rounding
-        radiusY: root.rounding
-        direction: PathArc.Counterclockwise
-      }
-
-      PathLine {
-        relativeX: 0
-        relativeY: -root.sideRelHeight
-      }
-
-      PathArc {
-        relativeX: root.rounding
-        relativeY: -root.topCornerRelativeY
-        radiusX: root.rounding
-        radiusY: root.rounding
+        horizontalCenter: parent.horizontalCenter
+        bottom:parent.bottom
       }
     }
-    SystemInfo{
-      id:sysContent
-      opacity:showing?1:0
-      visible:opacity>0
-      sysHeight:(root.implicitHeight-root.rounding-sysContent.spacing*3)/2
-      rounding:root.rounding/2
-      Behavior on opacity { NumberAnimation { duration: 200} }
+    MouseArea{
+      property var startTime:0
+      property real startY:0
+
+      onPressed:(mouse)=>{
+        startY=mouse.y;
+        startTime=Date.now();
+      }
+      anchors.fill:parent
+      drag.target: drawer
+      drag.axis: Drag.YAxis
+      drag.minimumY: root.closedY
+      drag.maximumY: root.openY
+      onReleased:(mouse)=> {
+        let velocity=((mouse.y-startY)/(Date.now()-startTime))*1000;
+        if (velocity<=-root.velocityThreshold || drawer.y< -root.dragThreshold) {
+          drawer.y=drawer.closeY;
+        }else if(velocity>=root.velocityThreshold || drawer.y>= -(root.height-root.dragThreshold)){
+          drawer.y=drawer.openY;
+        }else {
+          drawer.y=drawer.closeY;
+        }
+      }
     }
   }
 }

@@ -21,6 +21,7 @@ PanelWindow {
     anchors.fill: parent
     Wallpaper{}
     Border{}
+
   }
 }
 

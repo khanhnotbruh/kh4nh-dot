@@ -1,0 +1,1 @@
+git neovim clang gopls lua-language-server nodejs tree-sitter-cli npm librsvg imagemagick
